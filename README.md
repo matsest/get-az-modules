@@ -99,13 +99,13 @@ Az.Network
 Az.Resources
 ```
 
-#### Use in script
+#### Use in script or pipeline
 
 ```powershell
 $modules = ./Get-AzModules.ps1 -Path ./samples/sample.ps1 -CheckVersions
 
 foreach ($module in $modules){
-    Install-Module $module
+    Install-Module $module.Name -RequiredVersion $module.LatestVersion -Force
 }
 ```
 
