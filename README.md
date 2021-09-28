@@ -2,15 +2,16 @@
 
 ## Description
 
-A Powershell script that identifies which Az modules is needed to run a script that contains Az cmdlets.
+A Powershell script that identifies which Az modules is needed to run a script that contains Az cmdlets. Can also be used to identify required Az modules for your custom module.
 
 Avoid installing all [Az.* modules](https://github.com/Azure/azure-powershell/) in GitHub runners and other transient/minimal environments to save time and resources and handle your dependencies more explicitly.
-
 
 Why?
 
 1. Only use the depencies you need (only use required modules)
 2. Deal with dependencies explicitly (use required versions)
+
+PS: If you're new to the Az module please refer to the [official installation docs](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps).
 
 ## Usage
 
