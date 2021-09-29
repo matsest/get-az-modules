@@ -4,7 +4,7 @@
 
 A Powershell script that identifies which Az modules is needed to run a script that contains Az cmdlets. Can also be used to identify required Az modules for your custom module.
 
-Avoid installing all [Az.* modules](https://github.com/Azure/azure-powershell/) in GitHub runners and other transient/minimal environments to save time and resources and handle your dependencies more explicitly.
+Avoid installing all [Az.* modules](https://github.com/Azure/azure-powershell/) in GitHub runners, Azure Automation accounts and other transient/minimal environments to save time and resources and handle your dependencies more explicitly.
 
 Why?
 
@@ -22,12 +22,12 @@ PS: If you're new to the Az module please refer to the [official installation do
 
 ### Examples
 
-Tips: Try to run the script against any of the files in [samples](./samples).
+Tips: Try to run the script against any of the files in [examples](./examples).
 
 #### Basic usage
 
 ```powershell
-./Get-AzModules.ps1 -Path ./samples/sample.ps1
+./Get-AzModules.ps1 -Path ./examples/sample.ps1
 
 Looking for Az modules needed for sample.ps1...
 Number of unique Az cmdlets found: 17
@@ -39,7 +39,7 @@ Az.Resources
 
 #### Check versions of installed modules
 ```powershell
-./Get-AzModules.ps1 -Path ./samples/sample.ps1 -CheckVersions
+./Get-AzModules.ps1 -Path ./examples/sample.ps1 -CheckVersions
 
 Looking for Az modules needed for sample.ps1...
 Number of unique Az cmdlets found: 17
@@ -58,7 +58,7 @@ Az.Network   4.10.0           4.11.0
 #### Get info about modules not installed
 
 ```powershell
-/Get-AzModules.ps1 -Path ./samples/nondefault.ps1     
+/Get-AzModules.ps1 -Path ./examples/nondefault.ps1     
 
 Looking for Az modules needed for nondefault.ps1...
 Number of unique Az cmdlets found: 3
@@ -73,7 +73,7 @@ Az.Subscription
 #### Print all cmdlets
 
 ```powershell
-./Get-AzModules.ps1 -Path ./samples/sample.ps1 -Verbose
+./Get-AzModules.ps1 -Path ./examples/sample.ps1 -Verbose
 
 Looking for Az modules needed for sample.ps1...
 Number of unique Az cmdlets found: 17
@@ -103,7 +103,7 @@ Az.Resources
 #### Use in script or pipeline
 
 ```powershell
-$modules = ./Get-AzModules.ps1 -Path ./samples/sample.ps1 -CheckVersions
+$modules = ./Get-AzModules.ps1 -Path ./examples/sample.ps1 -CheckVersions
 
 foreach ($module in $modules){
     Install-Module $module.Name -RequiredVersion $module.LatestVersion -Force
