@@ -122,6 +122,30 @@ Microsoft.Graph.Teams
 Microsoft.Graph.Users
 ```
 
+## Dealing with dependencies in scripts
+
+### Using #requires
+
+In the beginning of your script you can add the [#requires](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_requires?view=powershell-7.4#-modules-module-name--hashtable) statement.
+
+```powershell
+#Requires -Modules @{ ModuleName="<modulename>"; ModuleVersion="<version>" }
+```
+
+This will need to be added for each module you want to use. Note that `ModuleVersion` only specifies the minimum acceptable version of the module. To require an exact, required version of a module, replace `ModuleVersion` with `RequiredVersion`.
+
+## Using Import-Module
+
+An alternative is to in your script, or in a separate script, run [`Import-Module`](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/import-module?view=powershell-7.4) explicitly with versions specified:
+
+```powershell
+Import-Module -Name Az.Resources -RequiredVersion 4.3.1 # specify exact version
+Import-Module -Name Az.Resources -MinimumVersion 4.3.0 # specify minimum version
+Import-Module -Name Az.Resources -MaximumVersion 4.4.0 # specify maximum version
+```
+
+You can also add `-ErrorAction Stop` to the cmdlets or set `$ErrorActionPreference="Stop"` in your script to ensure the script ensures the cmdlets run without errors.
+
 ## License
 
 The MIT License applies to the code contained in this repo. For more information, see [LICENSE](./LICENSE).
