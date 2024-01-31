@@ -58,7 +58,7 @@ Az.Network   4.10.0           4.11.0
 #### Get info about modules not installed
 
 ```powershell
-/Get-AzModules.ps1 -Path ./examples/nondefault.ps1     
+/Get-AzModules.ps1 -Path ./examples/nondefault.ps1
 
 Looking for Az modules needed for nondefault.ps1...
 Number of unique Az cmdlets found: 3
@@ -108,6 +108,18 @@ $modules = ./Get-AzModules.ps1 -Path ./examples/sample.ps1 -CheckVersions
 foreach ($module in $modules){
     Install-Module $module.Name -RequiredVersion $module.LatestVersion -Force
 }
+```
+
+#### Check against other modules than Az
+```powershell
+./Get-AzModules.ps1 -Path ./examples/sample.ps1 -Prefix Mg
+
+Looking for Mg modules needed for sample.ps1...
+Number of unique Mg cmdlets found: 17
+Number of Mg modules used: 3
+Microsoft.Graph.Authentication
+Microsoft.Graph.Applications
+Microsoft.Graph.Users
 ```
 
 ## License
