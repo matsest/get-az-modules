@@ -112,13 +112,13 @@ foreach ($module in $modules){
 
 #### Check against other modules than Az
 ```powershell
-./Get-AzModules.ps1 -Path ./examples/sample.ps1 -Prefix Mg
+./Get-AzModules.ps1 -Path ./examples/sample-mg.ps1 -Prefix Mg
 
-Looking for Mg modules needed for sample.ps1...
-Number of unique Mg cmdlets found: 17
+Looking for Mg modules needed for sample-mg.ps1...
+Number of unique Mg cmdlets found: 3
 Number of Mg modules used: 3
 Microsoft.Graph.Authentication
-Microsoft.Graph.Applications
+Microsoft.Graph.Teams
 Microsoft.Graph.Users
 ```
 
