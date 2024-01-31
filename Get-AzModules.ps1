@@ -7,7 +7,7 @@ param (
     $Path,
     [Parameter(HelpMessage = 'Prefix for the module used. Must match the prefix used in commandlets for the module. Defaults to "Az".')]
     [string]
-    $ParameterName = 'Az',
+    $Prefix = 'Az',
     [Parameter(HelpMessage = 'Check installed versions of used modules compared to latest')]
     [Switch]
     $CheckVersions
